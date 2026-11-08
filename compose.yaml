@@ -1,0 +1,17 @@
+services:
+  airzone:
+    build: .
+    container_name: airzone
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      # Your time zone, used by schedules. Examples: "Europe/Paris", "Europe/London", "America/New_York".
+      TZ: "Etc/UTC"
+      # IP address of your Airzone gateway on your home network, e.g. "192.168.1.50".
+      # You can leave it empty and enter it in the app instead: Settings → Thermostat connection.
+      AIRZONE_IP: ""
+      # Seconds to wait after each command sent to the gateway. Raise it if some changes are ignored.
+      # WRITE_GAP: "1.0"
+    volumes:
+      - ./data:/data
